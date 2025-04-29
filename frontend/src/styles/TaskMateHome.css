@@ -1,0 +1,82 @@
+.taskmate-home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #9370DB, #6A5ACD); /* Purple gradient */
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .taskmate-header {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .login-button,
+  .signup-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-button {
+    background-color: white;
+    color: #333;
+  }
+  
+  .signup-button {
+    background-color: #6A5ACD;
+    color: white;
+  }
+  
+  .signup-link {
+    text-decoration: none;
+  }
+  
+  .welcome-content {
+    text-align: center;
+  }
+  
+  .welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .get-started-button {
+    padding: 12px 25px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login-button:hover,
+  .signup-button:hover,
+  .get-started-button:hover {
+    opacity: 0.9;
+  }

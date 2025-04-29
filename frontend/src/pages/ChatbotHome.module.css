@@ -1,0 +1,31 @@
+.chatbotHome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Move content to the top */
+    height: 100vh;
+    padding-top: 2rem;/* Adjust padding from the top to move "Welcome" up */
+    text-align: center;
+  }
+  
+  .welcomeText {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Reduced margin to decrease space between text */
+  }
+  
+  .assistantText {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;/* Reduced space between "Welcome" and the assistant text */
+  }
+  
+  .lottieContainer {
+    width: 300px; /* Adjust width */
+    height: 300px; /* Adjust height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
