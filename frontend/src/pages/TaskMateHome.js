@@ -1,127 +1,67 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import WebcamPermissionModal from "./WebcamPermissionModal.js"; // Import the modal
+import { useNavigate } from "react-router-dom";
+import MoodDetectionModal from "../components/MoodDetectionModal";
+import WebcamPermissionModal from "./WebcamPermissionModal.js";
+import "./TaskMateHome.css";
 
 const TaskMateHome = () => {
-  const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [showWebcamModal, setShowWebcamModal] = useState(false);
+  const [showMoodModal, setShowMoodModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    setShowModal(true);
+    // First, show webcam permission request
+    setShowWebcamModal(true);
   };
 
-  const handleYes = () => {
-    // Logic to request webcam access and start mood tracking
-    console.log("Webcam access granted.");
-    setShowModal(false);
-    // You can also navigate to the next page or perform other actions here
+  const handleWebcamPermission = async (granted) => {
+    setShowWebcamModal(false);
+    if (granted) {
+      // If permission granted, show mood detection modal
+      setShowMoodModal(true);
+    } else {
+      // If denied, go directly to manual mood selection
+      navigate("/moodselection");
+    }
   };
 
-  const handleNo = () => {
-    // Logic to proceed without webcam access
-    console.log("Webcam access denied.");
-    setShowModal(false);
-    navigate("/moodselection"); // Redirect to moodselection
-  };
-
-  const handleClose = () => {
-    setShowModal(false);
+  const handleMoodConfirm = (moodData) => {
+    // When mood is detected and confirmed, navigate to mood selection with the detected mood
+    navigate("/moodselection", { state: { detectedMood: moodData } });
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        background: "linear-gradient(to bottom, #9370DB, #6A5ACD)",
-        color: "white",
-        fontFamily: "sans-serif",
-      }}
-    >
-      <header
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "30px",
-          fontSize: "1.8rem",
-          fontWeight: "bold",
-        }}
-      >
-        TaskMate
+    <div className="home-container">
+      <header className="home-header">
+        <h1>TaskMate</h1>
+        <div className="auth-buttons">
+          <button className="login-btn">Login</button>
+        </div>
       </header>
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "30px",
-          display: "flex",
-          gap: "15px",
-        }}
-      >
-        <button
-          style={{
-            padding: "10px 20px",
-            borderRadius: "8px",
-            fontSize: "1rem",
-            cursor: "pointer",
-            border: "none",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-            backgroundColor: "white",
-            color: "#333",
-          }}
-        >
-          Login
-        </button>
-      </div>
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            marginBottom: "15px",
-          }}
-        >
-          Welcome To TaskMate
-        </h1>
-        <p
-          style={{
-            fontSize: "1.2rem",
-            marginBottom: "30px",
-          }}
-        >
-          A simple to-do list to manage it all
-        </p>
-        <button
-          style={{
-            padding: "12px 25px",
-            backgroundColor: "black",
-            color: "white",
-            borderRadius: "25px",
-            fontSize: "1.1rem",
-            cursor: "pointer",
-            border: "none",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-          }}
-          onClick={handleGetStarted}
-        >
+
+      <main className="home-main">
+        <h1>Welcome To TaskMate</h1>
+        <p>A simple to-do list to manage it all</p>
+        <button className="get-started-btn" onClick={handleGetStarted}>
           Get Started
         </button>
-      </div>
+      </main>
 
-      {showModal && (
+      {/* Webcam Permission Modal */}
+      {showWebcamModal && (
         <WebcamPermissionModal
-          onYes={handleYes}
-          onNo={handleNo}
-          onClose={handleClose}
+          onYes={() => handleWebcamPermission(true)}
+          onNo={() => handleWebcamPermission(false)}
+          onClose={() => setShowWebcamModal(false)}
         />
       )}
+
+      {/* Mood Detection Modal */}
+      <MoodDetectionModal
+        isOpen={showMoodModal}
+        onClose={() => setShowMoodModal(false)}
+        onMoodConfirm={handleMoodConfirm}
+      />
     </div>
   );
 };

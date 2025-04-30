@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaRegBell, FaCalendarAlt } from "react-icons/fa";
 import "../styles/dashboard.css";
 import ChatbotAnimation from "../components/ChatbotAnimation";
+import axios from 'axios';
 import {
   LineChart,
   Line,
@@ -15,26 +16,42 @@ import {
 
 const moodMessages = {
   Happy: "Keep smiling and spread your positivity! 💛",
-  Sad: "It's okay to have tough days. You’re stronger than you think! 💙",
-  Angry: "Take a deep breath. You’ve got this! 🔥",
+  Sad: "It's okay to have tough days. You're stronger than you think! 💙",
+  Angry: "Take a deep breath. You've got this! 🔥",
   Stress: "Relax, one step at a time. You are capable of handling it! 🌿",
 };
 
 const moodEmojis = {
   Happy: "😊",
   Sad: "😢",
-  Angry: "😠-",
+  Angry: "😠",
   Stress: "😓",
 };
 
 const Dashboard = () => {
   const [mood, setMood] = useState("Neutral");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const storedMood = localStorage.getItem("selectedMood");
-    if (storedMood) {
-      setMood(storedMood);
-    }
+    const fetchLatestMood = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:4000/api/moods/latest', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (response.data) {
+          setMood(response.data.detectedMood || response.data.mood);
+        }
+      } catch (err) {
+        console.error('Error fetching mood:', err);
+        setError('Failed to fetch mood data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestMood();
   }, []);
 
   const data = [
@@ -45,6 +62,14 @@ const Dashboard = () => {
     { name: "Sep", tasks: 250 },
     { name: "Oct", tasks: 320 },
   ];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="dashboard-container">
