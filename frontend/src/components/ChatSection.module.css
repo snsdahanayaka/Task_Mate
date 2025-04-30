@@ -1,71 +1,70 @@
 .chatContainer {
-    width: 90%;
-    max-width: 800px;
-    margin: 2rem auto;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 1rem;
-    background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    height: 50px;
-  }
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+
+.chatMessages {
+  flex-grow: 1; /* Allow messages to expand within the set height */
+  overflow-y: auto;
+  max-height: 300px; /* Limit message area height */
   
-  .chatMessages {
-    flex-grow: 1; /* Allow messages to expand within the set height */
-    overflow-y: auto;
-    max-height: 300px; /* Limit message area height */
-    
-  }
-  
-  .userMessage {
-    text-align: right;
-    background: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 15px;
-    margin: 5px;
-    align-self: flex-end;
-  }
-  
-  .botMessage {
-    text-align: left;
-    background: #e1e1e1;
-    padding: 8px 12px;
-    border-radius: 15px;
-    margin: 5px;
-    align-self: flex-start;
-  }
-  
-  .inputContainer {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .chatInput {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .micButton,
-  .sendButton {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .micButton svg {
-    font-size: 2rem;
-    color: #007bff;
-  }
-  
-  .sendButton svg {
-    font-size: 2rem;
-    color: #28a745;
-  }
-  
+}
+
+.userMessage {
+  text-align: right;
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin: 5px;
+  align-self: flex-end;
+}
+
+.botMessage {
+  text-align: left;
+  background: #e1e1e1;
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin: 5px;
+  align-self: flex-start;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.chatInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.micButton,
+.sendButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.micButton svg {
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.sendButton svg {
+  font-size: 2rem;
+  color: #28a745;
+}
