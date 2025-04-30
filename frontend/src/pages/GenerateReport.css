@@ -1,0 +1,90 @@
+.generate-report-container {
+    display: flex;
+    height: 220vh; /* Full viewport height */
+    background-color:#d8faff;
+  }
+  
+  .generate-report-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 200px; /* Account for the sidebar width */
+  }
+  
+  .generate-report-content h1 {
+    color: #2c3e50;
+    text-align: center; /* Center the heading */
+  }
+  
+  /* Report Content */
+  #report-content {
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  
+  .mood-charts,
+  .mood-history {
+    margin-bottom: 20px;
+  }
+  
+  .mood-charts h2,
+  .mood-history h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  /* Charts */
+  .chart-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center charts horizontally */
+    justify-content: center; /* Center charts vertically */
+    width: 80%; /* Set a fixed width */
+    max-width: 800px; /* Limit maximum width */
+    margin: 0 auto; /* Center the container */
+    margin-top: 40px;
+  }
+  
+  /* Mood History Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #33c7d8;
+    color: white;
+  }
+  
+  /* Buttons Container */
+  .buttons-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 20px;
+    margin-left: 50px; /* Add left margin to avoid being too close to the sidebar */
+  }
+  
+  .back-to-history-btn,
+  .generate-report-btn {
+    padding: 10px 20px;
+    background-color: #33c7d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .back-to-history-btn:hover,
+  .generate-report-btn:hover {
+    background-color: #2aa8b8; /* Darker shade on hover */
+  }

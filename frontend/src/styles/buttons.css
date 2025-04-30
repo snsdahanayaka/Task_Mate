@@ -1,0 +1,22 @@
+.get-started-btn,
+.view-history-btn,
+.view-charts-btn,
+.generate-report-btn,
+.back-to-history-btn {
+  padding: 10px 20px;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.get-started-btn:hover,
+.view-history-btn:hover,
+.view-charts-btn:hover,
+.generate-report-btn:hover,
+.back-to-history-btn:hover {
+  background-color: #16a085;
+}
