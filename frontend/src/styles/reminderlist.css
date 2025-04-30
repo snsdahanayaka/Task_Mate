@@ -1,0 +1,197 @@
+/* Unique container for the reminders list */
+
+#reminder-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Full page height */
+    background: linear-gradient(135deg, #f3e7ff, #3b1468);
+    padding: 20px;
+}
+
+
+/* Styling the card */
+
+#reminder-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+}
+
+
+/* Title Styling */
+
+#reminder-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+/* Reminder List */
+
+#reminder-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+
+/* Individual Reminder Item */
+
+.reminder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.reminder-item:hover {
+    transform: scale(1.02);
+}
+
+
+/* Text content (Date, Time, Task) */
+
+.reminder-content {
+    flex: 1;
+    text-align: left;
+}
+
+.reminder-content strong {
+    font-weight: bold;
+    color: #6a0dad;
+    font-size: 16px;
+}
+
+
+/* Action Icons */
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-icon,
+.delete-icon {
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.edit-icon {
+    color: #007bff;
+}
+
+.edit-icon:hover {
+    color: #0056b3;
+}
+
+.delete-icon {
+    color: #dc3545;
+}
+
+.delete-icon:hover {
+    color: #a71d2a;
+}
+
+
+/* Blur background when modal is active */
+
+.blurred {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+
+/* Modal overlay (for both edit & delete modals) */
+
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+
+/* Card inside modal */
+
+.edit-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.edit-card h3,
+.edit-card h4 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.edit-card input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Button group inside modal */
+
+.edit-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.edit-buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+/* Save / Yes button */
+
+.edit-buttons button:first-child {
+    background-color: #1976d2;
+    color: white;
+}
+
+
+/* Cancel / No button */
+
+.edit-buttons button:last-child {
+    background-color: #aaa;
+    color: white;
+}
