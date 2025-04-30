@@ -4,12 +4,14 @@ import TaskMateHome from "./pages/TaskMateHome";
 import ChatbotHome from "./pages/ChatbotHome";
 import Dashboard from "./pages/Dashboard";
 import MoodSelection from "./pages/MoodSelection";
+import MoodPage from "./pages/MoodPage";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<TaskMateHome />} />
+        <Route path="/mood" element={<MoodPage />} />
         <Route path="/moodselection" element={<MoodSelection />} /> {/* Corrected route */}
         <Route path="/chatbot" element={<ChatbotHome />} />
         <Route path="/dashboard" element={<Dashboard />} />
