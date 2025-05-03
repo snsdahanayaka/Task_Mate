@@ -11,17 +11,16 @@ const TaskMateHome = () => {
   };
 
   const handleYes = () => {
-    // Logic to request webcam access and start mood tracking
     console.log("Webcam access granted.");
     setShowModal(false);
-    // You can also navigate to the next page or perform other actions here
+    navigate("/mood-detection");
   };
 
   const handleNo = () => {
     // Logic to proceed without webcam access
     console.log("Webcam access denied.");
     setShowModal(false);
-    navigate("/moodselection"); // Redirect to moodselection
+    navigate("/mood-selection"); // ✅ Fixed path (was "/moodselection")
   };
 
   const handleClose = () => {
@@ -76,11 +75,7 @@ const TaskMateHome = () => {
           Login
         </button>
       </div>
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
+      <div style={{ textAlign: "center" }}>
         <h1
           style={{
             fontSize: "2.5rem",

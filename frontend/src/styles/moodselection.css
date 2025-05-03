@@ -1,60 +1,60 @@
 .mood-selection-container {
-    text-align: center;
-    margin-top: 50px; /* Adjust as needed */
-  }
-  
-  .mood-frame {
-    background-color: #f0f0f0; /* Light gray background */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Adjust as needed */
-    max-width: 600px; /* Limit width on larger screens */
-    margin: 20px auto;
-  }
-  
-  .mood-options {
-    display: flex;
-    justify-content: center; /* Center the buttons */
-    gap: 20px; /* Space between buttons */
-    margin-top: 30px;
-  }
-  
-  .mood-button {
-    border: none;
-    background-color: transparent; /* Remove button background */
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0; /* Remove padding */
-  }
-  
-  .mood-image {
-    width: 150px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
-    border-radius: 50%; /* Make images circular */
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .mood-button p {
-    margin: 5px 0 0;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .submit-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049;
-  }
+  text-align: center;
+  margin-top: 50px; /* Adjust as needed */
+}
+
+.mood-frame {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Adjust as needed */
+  max-width: 600px; /* Limit width on larger screens */
+  margin: 20px auto;
+}
+
+.mood-options {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 20px; /* Space between buttons */
+  margin-top: 30px;
+}
+
+.mood-button {
+  border: none;
+  background-color: transparent; /* Remove button background */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0; /* Remove padding */
+}
+
+.mood-image {
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Adjust size as needed */
+  border-radius: 50%; /* Make images circular */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.mood-button p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.submit-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}

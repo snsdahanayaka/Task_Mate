@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaRegBell, FaCalendarAlt } from "react-icons/fa";
 import "../styles/dashboard.css";
 import ChatbotAnimation from "../components/ChatbotAnimation";
+import axios from 'axios';
 import {
   LineChart,
   Line,
@@ -29,12 +30,28 @@ const moodEmojis = {
 
 const Dashboard = () => {
   const [mood, setMood] = useState("Neutral");
+  const [moodHistory, setMoodHistory] = useState([]);
 
   useEffect(() => {
+    // Always try to use localStorage first for instant feedback
     const storedMood = localStorage.getItem("selectedMood");
     if (storedMood) {
       setMood(storedMood);
     }
+    // Then update from backend if available
+    const fetchMoodHistory = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/moods/latest');
+        if (response.data) {
+          setMood(response.data.mood);
+          localStorage.setItem("selectedMood", response.data.mood);
+        }
+      } catch (error) {
+        console.error('Failed to fetch mood:', error);
+        // Already handled by localStorage above
+      }
+    };
+    fetchMoodHistory();
   }, []);
 
   const data = [
@@ -75,7 +92,10 @@ const Dashboard = () => {
           <p>Sandali, {moodMessages[mood] || "Hope you have a great day! 😊"}</p>
           <div className="mood-box">
             <span>{moodEmojis[mood] || "🙂"}</span>
-            <p>Mood: {mood || "Neutral"}</p>
+            <p>Current Mood: {mood || "Neutral"}</p>
+            <button onClick={() => window.location.href = '/mood-detection'} className="update-mood-btn">
+              Update Mood
+            </button>
           </div>
         </div>
 

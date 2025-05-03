@@ -1,8 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const WebcamPermissionModal = ({ onYes, onNo, onClose }) => {
+const WebcamPermissionModal = ({ onYes, onClose }) => {
+  const navigate = useNavigate();
+
+  const handleYesClick = () => {
+    navigate("/webcam-detection"); // or wherever you show webcam
+    if (onYes) onYes(); // optional callback if parent wants to know
+  };
+
+  const handleNo = () => {
+    navigate("/mood-selection");
+  };
+
   return (
     <div
+      role="dialog"
+      aria-modal="true"
       style={{
         position: 'fixed',
         top: 0,
@@ -29,6 +43,7 @@ const WebcamPermissionModal = ({ onYes, onNo, onClose }) => {
         }}
       >
         <button
+          type="button"
           style={{
             position: 'absolute',
             top: '10px',
@@ -45,16 +60,17 @@ const WebcamPermissionModal = ({ onYes, onNo, onClose }) => {
         <p
           style={{
             marginBottom: '20px',
-            color: 'black', // Explicitly set text color to black
-            fontSize: '16px', // Explicitly set font size
-            fontWeight: 'normal', // Explicitly set font weight
-            opacity: 1, // Explicitly set opacity
+            color: 'black',
+            fontSize: '16px',
+            fontWeight: 'normal',
+            opacity: 1,
           }}
         >
-          Do you like on your webcam to capture your face to mood tracking?
+          Do you allow access to your webcam? This is necessary for mood detection.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
           <button
+            type="button"
             style={{
               padding: '10px 20px',
               border: 'none',
@@ -64,11 +80,12 @@ const WebcamPermissionModal = ({ onYes, onNo, onClose }) => {
               backgroundColor: '#4CAF50',
               color: 'white',
             }}
-            onClick={onYes}
+            onClick={handleYesClick}
           >
             YES
           </button>
           <button
+            type="button"
             style={{
               padding: '10px 20px',
               border: 'none',
@@ -78,7 +95,7 @@ const WebcamPermissionModal = ({ onYes, onNo, onClose }) => {
               backgroundColor: '#f44336',
               color: 'white',
             }}
-            onClick={onNo}
+            onClick={handleNo}
           >
             NO
           </button>

@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import happyImage from "../assets/happy.jpeg";
 import sadImage from "../assets/sad.jpeg";
 import angryImage from "../assets/angry.jpeg";
 import stressImage from "../assets/stress.jpeg";
+
+// Emoji mapping for moods
+const moodEmojis = {
+  Happy: "😊",
+  Sad: "😢",
+  Angry: "😠",
+  Stress: "😓",
+};
+
 
 const moods = [
   { name: "Happy", image: happyImage },
@@ -65,6 +73,15 @@ const MoodSelection = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const detectedMood = localStorage.getItem('selectedMood');
+    if (detectedMood) {
+      // Normalize mood to capitalize first letter
+      const normalizedMood = detectedMood.charAt(0).toUpperCase() + detectedMood.slice(1).toLowerCase();
+      setSelectedMood(normalizedMood);
+    }
+  }, []);
+
   const handleMoodSelect = (mood) => {
     setSelectedMood(mood);
     localStorage.setItem("selectedMood", mood);
@@ -85,6 +102,8 @@ const MoodSelection = () => {
         {moods.map((mood) => (
           <MoodButton key={mood.name} onClick={() => handleMoodSelect(mood.name)}>
             <MoodImage src={mood.image} alt={mood.name} />
+            {/* Show emoji next to the image */}
+            <div style={{ fontSize: '2rem', margin: '8px 0' }}>{moodEmojis[mood.name]}</div>
             <MoodText>{mood.name}</MoodText>
           </MoodButton>
         ))}
@@ -92,6 +111,10 @@ const MoodSelection = () => {
 
       {selectedMood && (
         <div>
+          {/* Show emoji for selected mood */}
+          <div style={{ fontSize: '3rem', margin: '10px 0' }}>
+            {moodEmojis && moodEmojis[selectedMood]}
+          </div>
           <h3>You selected: {selectedMood}</h3>
           <SubmitButton onClick={handleMoodSubmit}>Submit Mood</SubmitButton>
         </div>

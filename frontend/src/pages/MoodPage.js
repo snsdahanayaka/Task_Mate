@@ -6,10 +6,11 @@ import './MoodPage.css';
 
 const MoodPage = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState('detection'); // 'detection' or 'selection'
+  const [step, setStep] = useState('detection');
   const [detectedMood, setDetectedMood] = useState(null);
   const [selectedMood, setSelectedMood] = useState('');
   const [energyLevel, setEnergyLevel] = useState('');
+  const [error, setError] = useState(null);
 
   const moodOptions = [
     { value: 'happy', label: 'Happy', emoji: '😊' },
@@ -34,16 +35,26 @@ const MoodPage = () => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post('/api/moods', {
+      setError(null);
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        throw new Error('No authentication token found. Please log in.');
+      }
+
+      await axios.post('http://localhost:5000/api/moods', {
         mood: selectedMood,
         detectedMood: detectedMood.detectedMood,
         emoji: detectedMood.emoji,
         energyLevel
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
+
       navigate('/dashboard');
     } catch (error) {
       console.error('Error saving mood:', error);
-      alert('Failed to save mood. Please try again.');
+      setError(error.response?.data?.error || error.message || 'Failed to save mood. Please try again.');
     }
   };
 
@@ -97,6 +108,7 @@ const MoodPage = () => {
           >
             Submit
           </button>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
       )}
     </div>
