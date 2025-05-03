@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/reminderlist.css";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaCheckCircle } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -67,28 +67,61 @@ export default function ReminderList() {
     }
   };
 
+  const markAsCompleted = async (reminder) => {
+    try {
+      await axios.put(`${BASE_URL}/update/${reminder._id}`, {
+        ...reminder,
+        status: "completed",
+      });
+      toast.success("✅ Marked as completed!");
+      fetchReminders();
+    } catch (error) {
+      toast.error("❌ Failed to mark as completed.");
+    }
+  };
+
   return (
     <div id="reminder-list-container">
-      {/* Blur both list and sidebar when editing or deleting */}
       <div className={isEditing || confirmingReminderId ? "blurred" : ""}>
         <div id="reminder-card">
-          <h2 id="reminder-title">Your Reminders</h2>
+          <h2 id="reminder-title">📝Your Reminders</h2>
           {reminders.length === 0 && <p>No Reminders Set</p>}
           <ul id="reminder-list">
             {reminders.map((item) => (
-              <li key={item._id} className="reminder-item">
-                <div className="reminder-content">
-                  <strong>{item.date}</strong> at {item.time} - {item.text}
-                </div>
-                <div className="actions">
-                  <FaEdit
-                    className="edit-icon"
-                    onClick={() => startEditing(item)}
-                  />
-                  <FaTrash
-                    className="delete-icon"
-                    onClick={() => setConfirmingReminderId(item._id)}
-                  />
+              <li
+                key={item._id}
+                className={`reminder-item ${
+                  item.status === "completed" ? "completed" : ""
+                }`}
+              >
+                <div className="reminder-line">
+                  <span className="reminder-date">{item.date}</span>
+                  <span className="reminder-time">{item.time}</span>
+                  <span className="reminder-text">{item.text}</span>
+                  <span className="reminder-icons">
+                    {item.status !== "completed" ? (
+                      <FaCheckCircle
+                        className="complete-icon"
+                        style={{ color: "gray" }}
+                        title="Mark as Completed"
+                        onClick={() => markAsCompleted(item)}
+                      />
+                    ) : (
+                      <FaCheckCircle
+                        className="complete-icon"
+                        style={{ color: "green" }}
+                        title="Completed"
+                      />
+                    )}
+                    <FaEdit
+                      className="edit-icon"
+                      onClick={() => startEditing(item)}
+                    />
+                    <FaTrash
+                      className="delete-icon"
+                      onClick={() => setConfirmingReminderId(item._id)}
+                    />
+                  </span>
                 </div>
               </li>
             ))}
@@ -96,7 +129,6 @@ export default function ReminderList() {
         </div>
       </div>
 
-      {/* Edit Modal */}
       {isEditing && (
         <div className="edit-modal">
           <div className="edit-card">
@@ -135,7 +167,6 @@ export default function ReminderList() {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {confirmingReminderId && (
         <div className="edit-modal">
           <div className="edit-card">
@@ -148,12 +179,7 @@ export default function ReminderList() {
         </div>
       )}
 
-      {/* Toast Container */}
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        toastClassName="custom-toast"
-      />
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 }
