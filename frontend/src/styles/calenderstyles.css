@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+}
+
+.calendar-container {
+    width: 360px;
+    background-color: #451466;
+    /* Make it pure white */
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    /* Slightly stronger shadow */
+    margin-top: 40px;
+}
+
+.reminder-form {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.reminder-form input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-form input:focus {
+    border-color: #43254f;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(170, 96, 200, 0.3);
+}
+
+.set-reminder {
+    width: 100%;
+    background: linear-gradient(45deg, #6a11cb, #924697);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.set-reminder:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #5a0fc8, #1f5be3);
+}
+
+.custom-toast {
+    font-size: 1rem;
+    border-radius: 8px;
+    background: #fdfdfd;
+    color: #333;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+}
+
+.react-calendar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-calendar__tile {
+    padding: 10px 6px;
+    border-radius: 10px;
+    transition: background 0.2s ease-in-out;
+}
+
+.react-calendar__tile:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.react-calendar__tile--now {
+    background: #d1c4e9;
+    color: black;
+}
+
+.react-calendar__tile--active {
+    background: #673ab7;
+    color: white;
+}
