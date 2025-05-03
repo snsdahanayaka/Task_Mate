@@ -56,7 +56,7 @@ const Dashboard = () => {
           <li><Link to="/analytics">Mood</Link></li>
           <li><Link to="/chatbot">Chatbot</Link></li> {/* Corrected Link */}
           <li><Link to="/calendar">Calendar</Link></li>
-          <li><Link to="/notifications">Remainder</Link></li>
+          <li><Link to="/management">Reminder</Link></li>
           <li><Link to="/settings">Settings</Link></li>
         </ul>
       </div>

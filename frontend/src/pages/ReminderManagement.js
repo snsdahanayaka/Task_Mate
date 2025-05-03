@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/calenderstyles.css";
-import Sidebar from "./Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -98,7 +97,7 @@ export default function ReminderManagement() {
   // ... rest of your component code remains the same ...
   return (
     <div className="container">
-      <Sidebar />
+     
       <h2 className="title">Reminder Management</h2>
 
       <div className="calendar-container">
