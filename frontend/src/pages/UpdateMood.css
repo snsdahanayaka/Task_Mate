@@ -1,0 +1,110 @@
+.update-mood-container {
+    display: flex;
+    height: 150vh; /* Full viewport height */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3zllBcfb9hSmYxac1XR4W0LuBWnNbeYVj6g&s'); /* Add the background image */
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+  }
+  
+  .update-mood-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Account for the sidebar width */
+    background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background for readability */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    max-width: 800px; /* Limit the width of the content */
+    margin: 0 auto; /* Center the content */
+  }
+  
+  .update-mood-content h1 {
+    color: #2c3e50;
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+  
+  /* Mood Face Circle */
+  .mood-face-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #33c7d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px; /* Center the circle and add margin */
+  }
+  
+  /* Form Styling */
+  .update-mood-form {
+    max-width: 600px;
+    margin: 0 auto; /* Center the form */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+  }
+  
+  .checkbox-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Buttons Container */
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .update-button,
+  .delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .update-button {
+    background-color: #33c7d8;
+    color: white;
+  }
+  
+  .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .update-button:hover {
+    background-color: #2aa8b8; /* Darker shade on hover */
+  }
+  
+  .delete-button:hover {
+    background-color: #cc0000; /* Darker shade on hover */
+  }
